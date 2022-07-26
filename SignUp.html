@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Login.css">
+
+</head>
+
+<body>
+
+    <div class="form">
+
+        <form name="Loginform" action="" class="loginform" onsubmit=" false">
+            <h3>Userlogin</h3>
+            <input type="text" placeholder="User id" name="username" id="user" maxlength="10" minlength="5"
+                required><br><br>
+            <input type="password" placeholder="Createpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                name="password1" id="password1" maxlength="12" minlength="8" required><br><br>
+
+            <input type="password" placeholder="Confirmpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                name="password2" id="password2" maxlength="12" minlength="8" required><br><br>
+
+
+
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("password1");
+                    if (x.type === "password1") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password1";
+                    }
+                }
+            </script>
+
+
+            <p id="error" style="background-color: red; color: black; border-radius: 5px;"></p>
+            <!-- <input type="checkbox"><label for="">Reminder me</label><br>-->
+            <button type="submit" onclick="validate()" class="btn btn-primary">Submit</button><br><br>
+
+            <a href="orderDtails.html" id="a"></a>
+        </form><br>
+
+        <script>
+            function validate() {
+                let userN = document.forms["Loginform"]["username"].value;
+                let password1 = document.forms["Loginform"]["password1"].value;
+
+                if (userN == "") {
+                    document.getElementById("user").style.border = "thick solid red"
+                    document.getElementById("a").style.display = "none"
+                    document.getElementById("error").innerHTML = "Invalid userId or wrong password1"
+                    document.getElementById("error").style.padding = "10px"
+
+                }
+                else if (userN.length < 11 && userN.length > 4) {
+                    document.getElementById("user").style.border = "thick solid green"
+                    if (password1 == "") {
+                        document.getElementById("password1").style.border = "thick solid red"
+                        document.getElementById("error").innerHTML = "Invalid userId or wrong password1"
+                        document.getElementById("error").style.padding = "10px"
+                        document.getElementById("a").style.display = "none"
+
+                    } else if (password1 != "") {
+                        document.getElementById("password1").style.border = "thick solid green"
+                        document.getElementById("error").innerHTML = ""
+                        document.getElementById("error").style.padding = "0"
+                        document.getElementById("a").style.display = "block"
+                    }
+                    if (password2 == "") {
+                        document.getElementById("password1").style.border = "thick solid red"
+                        document.getElementById("error").innerHTML = "Invalid userId or wrong password1"
+                        document.getElementById("error").style.padding = "10px"
+                        document.getElementById("a").style.display = "none"
+
+                    } else if (password2 != "") {
+                        document.getElementById("password2").style.border = "thick solid green"
+                        document.getElementById("error").innerHTML = ""
+                        document.getElementById("error").style.padding = "0"
+                        document.getElementById("a").style.display = "block"
+                    }
+                }
+                if (password1 !=+ passward2) {
+                    document.getElementById("message2").innerHTML = "**Passwords are not same";
+                    return false;
+                } else {
+                    alert("Your password created successfully");
+                    document.write("JavaScript form has been submitted successfully");
+                }
+            }
+        </script>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Login.css">
+
+</head>
+
+<body>
+
+    <div class="form">
+
+        <form name="Loginform" action="" class="loginform" onsubmit=" false">
+            <h3>Userlogin</h3>
+            <input type="text" placeholder="User id" name="username" id="user" maxlength="10" minlength="5"
+                required><br><br>
+            <input type="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password"
+                id="password" maxlength="12" minlength="8" required><br><br>
+            <input type="checkbox" onclick="myFunction()">Veiw password<br>
+            <a href="SignUp.html">Dont have an account?Sign up</a>
+
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("password");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+            </script>
+
+
+            <p id="error" style="background-color: red; color: black; border-radius: 5px;"></p>
+            <!-- <input type="checkbox"><label for="">Reminder me</label><br>-->
+            <button type="submit" onclick="validate()" class="btn btn-primary">Submit</button><br><br>
+
+            <a href="orderDtails.html" id="a"></a>
+        </form><br>
+
+        <script>
+            function validate() {
+                let userN = document.forms["Loginform"]["username"].value;
+                let password = document.forms["Loginform"]["password"].value;
+
+                if (userN == "") {
+                    document.getElementById("user").style.border = "thick solid red"
+                    document.getElementById("a").style.display = "none"
+                    document.getElementById("error").innerHTML = "Invalid userId or wrong password"
+                    document.getElementById("error").style.padding = "10px"
+
+                }
+                else if (userN.length < 11 && userN.length > 4) {
+                    document.getElementById("user").style.border = "thick solid green"
+                    if (password == "") {
+                        document.getElementById("password").style.border = "thick solid red"
+                        document.getElementById("error").innerHTML = "Invalid userId or wrong password"
+                        document.getElementById("error").style.padding = "10px"
+                        document.getElementById("a").style.display = "none"
+
+                    } else if (password != "") {
+                        document.getElementById("password").style.border = "thick solid green"
+                        document.getElementById("error").innerHTML = ""
+                        document.getElementById("error").style.padding = "0"
+                        document.getElementById("a").style.display = "block"
+                    }
+                }
+            }
+        </script>
+
+    </div>
+    
+    
+</body>
+
+</html>
